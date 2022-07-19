@@ -22,15 +22,9 @@ public class CategoryService {
 	public List<Category> category_list() {
 		return repository.findAll();
 	}
-	public Category findById(Long id) {
-		return repository.findById(id);
+	public Category findByName(String name) {
+		return repository.findByName(name);
 	}
-	public void updateCategory(Category category) {
-		Category category1=findById(category.getId());
-		category1.setName(category.getName());
-		repository.save(category1);
-	}
-
 	public String delete(int id) {
 		repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Category", "Id", id));
 		repository.deleteById(id);

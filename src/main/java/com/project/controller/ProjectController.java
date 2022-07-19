@@ -44,6 +44,7 @@ public class ProjectController {
 	public List<Asset> listAsset() {
 		return asset_service.asset_list();
 	}
+	
 	@GetMapping("/employeed")
 	public List<Employee> listEmployees() {
 		return employeeService.emp_list();
@@ -61,9 +62,8 @@ public class ProjectController {
 	public List<Category> listCategories() {
 		return category_service.category_list();
 	}
-	
 	////////delete asset/////////
-	@GetMapping("/deletecategory")
+	@GetMapping("/deleteAsset")
 	public String deleteAsset(@RequestParam Long id) {
 		return asset_service.delete(id);
 	}
@@ -106,9 +106,5 @@ public class ProjectController {
 		asset_service.deAssignAsset(id);;
 	}
 	
-	@PostMapping("/updateCategory")
-	public void updateCategory(@RequestBody Category category) {
-		category_service.updateCategory(category);
-	}
 	
 }

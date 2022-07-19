@@ -20,4 +20,8 @@ public class AssignmentService {
 		Assignment assignment=assignmentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Assignment", "Id", id));;
 		return assignment;
 	}
+	
+	public Assignment findByName(String name) {
+		return assignmentRepository.findByName(name);
+	}
 }

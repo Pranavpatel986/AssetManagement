@@ -1,24 +1,16 @@
 package com.project.entity;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
-import javax.annotation.Generated;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.project.service.AssignmentService;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Asset {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	private String name;
@@ -42,15 +34,17 @@ public class Asset {
 	private String condition_note;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	private Category category;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	private Assignment assignment_status;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	private Employee employee;
 	  
-
 }

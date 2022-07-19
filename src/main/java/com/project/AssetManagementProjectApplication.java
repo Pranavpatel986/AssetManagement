@@ -40,10 +40,11 @@ class DemoCommandLineRunner implements CommandLineRunner{
 		service.save(category3);
 		service.save(category4);
 	}
+	
 	public void saveAssignment() {
-		Assignment a1=new Assignment(1, "Available");
-		Assignment a2=new Assignment(2, "Assigned");
-		Assignment a3=new Assignment(3, "Recovered");
+		Assignment a1=new Assignment(1,"Available");
+		Assignment a2=new Assignment(2,"Assigned");
+		Assignment a3=new Assignment(3,"Recovered");
 		service2.save(a1);
 		service2.save(a2);
 		service2.save(a3);

@@ -19,13 +19,4 @@ public class Employee {
 	private Long id;
 	private String fullName;
 	private String designation;
-	
-	
-	public Employee(String fullName, String designation) {
-		super();
-		this.fullName = fullName;
-		this.designation = designation;
-	}
-	
-	
 }

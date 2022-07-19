@@ -43,8 +43,9 @@ public class AssetService {
 		Employee employee=employeeService.findEmpById(emp_id);
 		Asset asset=assetRepository.findById(asset_id).orElseThrow(() -> new ResourceNotFoundException("Asset", "Id", emp_id));
 		asset.setEmployee(employee);
-		////////assigned id is 2
-		asset.setAssignment_status(assignmentService.findById(2));
+		
+		////////assigned
+		asset.setAssignment_status(assignmentService.findByName("Assigned"));
 		assetRepository.save(asset);
 	}
 	
@@ -54,8 +55,8 @@ public class AssetService {
 		Asset asset=assetRepository.findById(asset_id).orElseThrow(() -> new ResourceNotFoundException("Asset", "Id", asset_id));;
 		asset.setEmployee(null);
 		
-		//////Recovered id is 3
-		asset.setAssignment_status(assignmentService.findById(3));
+		//////Recovered //
+		asset.setAssignment_status(assignmentService.findByName("Recovered"));
 		assetRepository.save(asset);
 	}
 	
@@ -63,8 +64,8 @@ public class AssetService {
 	////////delete the asset//////
 	public String delete(Long id) {
 		Asset asset= assetRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Asset", "Id", id));
-		///////assigned id is 2/////
-		if(asset.getAssignment_status().getId()==2) {
+		///////assigned/////
+		if(asset.getAssignment_status().getValue().equals("Assigned")) {
 			return "Asset is assigned currently cannot be deleted";
 		}
 		
